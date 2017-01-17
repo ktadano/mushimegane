@@ -1,16 +1,16 @@
+require 'csv'
+
 class CsvImporter
 
   def self.import(file)
-    CSV.foreach(file.path, headers: true) do |row|
-      data = new
-      data.attributes = row.to_hash.slice(*attributes)
-      data.save!
-    end
+    @headers, *@attributes = CSV.read(file.path)
   end
 
-  private
+  def self.headers
+    @headers
+  end
 
   def self.attributes
-    ["name", "context"]
+    @attributes
   end
 end
