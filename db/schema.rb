@@ -13,8 +13,9 @@
 ActiveRecord::Schema.define(version: 20170117121419) do
 
   create_table "contents", force: :cascade do |t|
+    t.string   "upload_file_path"
     t.string   "upload_file_name"
-    t.binary   "upload_file"
+    t.string   "klass_name"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
