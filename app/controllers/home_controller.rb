@@ -1,12 +1,17 @@
 class HomeController < ApplicationController
 
   def index
-    # TODO:temporary table からparam を引き出す。
+    @file_list = Content.select(:id).pluck(:upload_file_name);
   end
 
   def create
-    CsvImporter.import(params[:file])
+    file = params[:file]
 
-    redirect_to root_path
+    if file != nil
+      content = Content.new
+      content.on_record(file)
+    end
+
+   redirect_to root_path
   end
 end
