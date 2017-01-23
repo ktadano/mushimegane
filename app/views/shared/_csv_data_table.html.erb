@@ -1,0 +1,18 @@
+<div>
+  <% if @headers.present? %>
+    <table border=1>
+      <tr>
+        <% @headers.each do |h| %>
+          <th><%= h %></th>
+        <% end %>
+      </tr>
+      <% @attributes.each do |attribute| %>
+        <tr>
+          <% attribute.each do |t| %>
+            <th><%= t %></th>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>
