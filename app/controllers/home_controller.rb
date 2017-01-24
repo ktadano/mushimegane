@@ -14,4 +14,9 @@ class HomeController < ApplicationController
 
    redirect_to root_path
   end
+
+  def destroy
+    # ファイルとテーブル全て削除する
+    # @connection.drop_table(table_name)
+  end
 end
