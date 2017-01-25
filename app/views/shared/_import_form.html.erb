@@ -1,0 +1,4 @@
+<%= form_tag({controller: "home", action: "create", method: "post"}, {multipart: true}) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "アップロード" %>
+<% end %>

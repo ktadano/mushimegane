@@ -1,0 +1,36 @@
+<h1>mushimegane</h1>
+<p>ホーム画面</p>
+
+<h3>
+  アップロードフォーム
+</h3>
+<div>
+  <session class="import_form_a">
+  <%= render 'shared/import_form' %>
+  </session>
+</div>
+<p>ーーーーーーーーーーーーーーーーーーーー</p>
+<div>
+  <% if @file_list.present? %>
+    <table border=1>
+      <% @file_list.each do |f| %>
+        <tr>
+          <th><%= f %></th>
+          <th>
+            <%= check_box_tag "id" %> <%= label_tag "id", "" %>
+          </th>
+          <th>
+            <%= submit_tag "削除" %>
+          </th>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+
+  <p>ーーーーーーーーーーーーーーーーーーーー</p>
+  <div>
+    <h3>比較オプション</h3>
+    <%= select_tag(:values, options_for_select(['', 'id', 'first_name', 'last_name', 'email'])) %>
+  </div>
+  <%= submit_tag "比較" %>
+</div>
