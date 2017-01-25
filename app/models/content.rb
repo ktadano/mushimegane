@@ -1,5 +1,3 @@
-require 'csv'
-
 class Content < ApplicationRecord
 
   validates :upload_file_name, presence: true
@@ -16,10 +14,8 @@ class Content < ApplicationRecord
     File.open(output_path(file.original_filename), 'w+b') do |fp|
       fp.write file.read
     end
-  end
 
-  def read(file_path)
-    CSV.read(file_path)
+    RecordGenerater.make(@content)
   end
 
   private
