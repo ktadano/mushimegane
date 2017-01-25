@@ -8,8 +8,6 @@ module RecordGenerater
     make_table(table_name)
     insert_data(table_name)
     make_class(content.klass_name)
-
-    @connection.drop_table(table_name)
   end
 
   def self.make_table(table_name)
@@ -39,6 +37,10 @@ module RecordGenerater
       end
       Object.const_set(model_name, klass)
     end
+  end
+
+  def self.delete_table(table_name)
+    @connection.drop_table(table_name)
   end
 
   private

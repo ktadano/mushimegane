@@ -11,18 +11,17 @@
 </div>
 <p>ーーーーーーーーーーーーーーーーーーーー</p>
 <div>
-  <% if @file_list.present? %>
+  <% if @files.present? %>
     <table border=1>
-      <% @file_list.each do |f| %>
+      <% @files.each do |file| %>
         <tr>
-          <th><%= f %></th>
+          <th><%= file.upload_file_name %></th>
           <th>
             <%= check_box_tag "id" %> <%= label_tag "id", "" %>
           </th>
           <th>
-            <%= form_tag({controller: "home", action: "destroy", method: "delete"}, {multipart: true}) do %>
-              <%= submit_tag "削除" %>
-            <% end %>
+            <%= link_to "delete", delete_path(id: file.id), method: :delete,
+            data: { confirm: "本当によろしいですか？" } %>
           </th>
         </tr>
       <% end %>
