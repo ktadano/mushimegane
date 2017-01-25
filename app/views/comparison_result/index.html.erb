@@ -1,0 +1,35 @@
+<h2>比較結果</h2>
+<p>--------------------</p>
+<div>
+  <p>file_01</p>
+  <% if @file1.present? %>
+    <table border=1>
+      <tr>
+      <% @file1.each do |attr| %>
+        <tr>
+          <% attr.each do |h| %>
+            <th><%= h %></th>
+          <% end %>
+        </tr>
+      <% end %>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<p>--------------------</p>
+<div>
+  <p>file_02</p>
+  <% if @file2.present? %>
+    <table border=1>
+      <tr>
+      <% @file2.each do |attr| %>
+        <tr>
+          <% attr.each do |h| %>
+            <th><%= h %></th>
+          <% end %>
+        </tr>
+      <% end %>
+      </tr>
+    </table>
+  <% end %>
+</div>

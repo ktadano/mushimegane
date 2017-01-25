@@ -5,7 +5,7 @@
   アップロードフォーム
 </h3>
 <div>
-  <session class="import_form_a">
+  <session class="import_form">
   <%= render 'shared/import_form' %>
   </session>
 </div>
@@ -17,23 +17,19 @@
         <tr>
           <th><%= file.upload_file_name %></th>
           <th>
-            <%= check_box_tag "id" %> <%= label_tag "id", "" %>
-          </th>
-          <th>
             <%= link_to "delete", delete_path(id: file.id), method: :delete,
-            data: { confirm: "本当によろしいですか？" } %>
+            data: { confirm: "本当に削除してよろしいですか？" } %>
           </th>
         </tr>
       <% end %>
     </table>
   <% end %>
-
   <p>ーーーーーーーーーーーーーーーーーーーー</p>
   <div>
     <h3>比較オプション</h3>
     <%= select_tag(:values, options_for_select(['', 'id', 'first_name', 'last_name', 'email'])) %>
   </div>
-  <%= form_tag({controller: "compare", action: "create", method: "post"}, {multipart: true}) do %>
+  <%= form_tag({controller: "comparison_result", action: "create", method: "post"}, {multipart: true}) do %>
     <%= submit_tag "比較" %>
   <% end %>
 </div>

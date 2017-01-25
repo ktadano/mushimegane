@@ -5,13 +5,15 @@ class HomeController < ApplicationController
   end
 
   def create
-    file = params[:file]
+    if Content.count <= 1
+      file = params[:file]
 
-    if file != nil
-      content = Content.new
-      content.on_record(file)
+      if file != nil
+        content = Content.new
+        content.on_record(file)
+      end
     end
 
-   redirect_to root_path
+    redirect_to root_path
   end
 end
