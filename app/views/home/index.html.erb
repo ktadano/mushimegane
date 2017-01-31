@@ -1,0 +1,35 @@
+<h1>mushimegane</h1>
+<p>ホーム画面</p>
+
+<h3>
+  アップロードフォーム
+</h3>
+<div>
+  <session class="import_form">
+  <%= render 'shared/import_form' %>
+  </session>
+</div>
+<p>ーーーーーーーーーーーーーーーーーーーー</p>
+<div>
+  <% if @files.present? %>
+    <table border=1>
+      <% @files.each do |file| %>
+        <tr>
+          <th><%= file.upload_file_name %></th>
+          <th>
+            <%= link_to "delete", delete_path(id: file.id), method: :delete,
+            data: { confirm: "本当に削除してよろしいですか？" } %>
+          </th>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+  <p>ーーーーーーーーーーーーーーーーーーーー</p>
+  <div>
+    <h3>比較オプション</h3>
+    <%= select_tag(:values, options_for_select(['', 'id', 'first_name', 'last_name', 'email'])) %>
+  </div>
+  <%= form_tag({controller: "comparison_result", action: "create", method: "post"}, {multipart: true}) do %>
+    <%= submit_tag "比較" %>
+  <% end %>
+</div>
